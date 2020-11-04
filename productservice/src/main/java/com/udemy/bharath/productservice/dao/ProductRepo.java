@@ -12,6 +12,6 @@ public interface ProductRepo extends CrudRepository<Product,Long> {
 	@Override
 	List<Product> findAll();
 
-	@Query(nativeQuery = true, value = "SELECT * FROM product WHERE name=$1")
+	@Query(nativeQuery = true, value = "SELECT * FROM product WHERE name=?1")
 	Product findByName(String name);
 }

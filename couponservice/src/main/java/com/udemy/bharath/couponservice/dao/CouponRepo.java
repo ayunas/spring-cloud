@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CouponRepo extends CrudRepository<Coupon,Long> {
 
-	@Query(nativeQuery = true, value="SELECT * FROM coupon WHERE code= ?1")
+//	@Query(nativeQuery = true, value="SELECT * FROM coupon WHERE code= ?1")
 	Coupon getCouponByCode(String code); //automatically does a custom query without specifying it.
 }
 

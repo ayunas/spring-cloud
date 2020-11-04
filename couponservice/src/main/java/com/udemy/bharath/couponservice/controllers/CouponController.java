@@ -20,7 +20,9 @@ public class CouponController {
 	@GetMapping("/{code}")
 	public Coupon getACoupon(@PathVariable String code) {
 		System.out.println(code);
-		return couponRepo.getCouponByCode(code);
+		Coupon coupon = couponRepo.getCouponByCode(code);
+		System.out.println("coupon : " + coupon.toString());
+		return coupon;
 	}
 
 	@GetMapping

@@ -25,7 +25,10 @@ public class ProductController {
 
 	@GetMapping("/{name}")
 	public Product getProductByName(@PathVariable String name) {
-		return productRepo.findByName(name);
+		System.out.println("product name : " + name);
+		Product prod = productRepo.findByName(name);
+		System.out.println(prod.toString());
+		return prod;
 	}
 
 	@PostMapping
