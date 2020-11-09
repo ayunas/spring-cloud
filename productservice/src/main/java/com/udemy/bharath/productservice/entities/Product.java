@@ -2,10 +2,7 @@ package com.udemy.bharath.productservice.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -13,11 +10,10 @@ import java.math.BigDecimal;
 @Getter @Setter
 @ToString
 public class Product {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String name;
 	private String description;
 	private BigDecimal price;
+	@Transient private String couponCode; //we don't want to persist this in the database.  it's only used in the controller by the CouponClient
 }
