@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@FeignClient("coupon-service")
+@FeignClient("COUPON-SERVICE")
 public interface CouponClient {
 	@GetMapping("/api/coupons/{code}")
 	Coupon getCoupon(@PathVariable("code") String code);
