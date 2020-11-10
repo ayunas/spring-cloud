@@ -44,13 +44,12 @@ public class ProductController {
 		System.out.println("product in addProduct() " + prod.toString());
 		String code = prod.getCouponCode();
 		Coupon coupon = couponClient.getCoupon(code);
-
-//		BigDecimal discount = coupon.getDiscount();
-//		BigDecimal lowerPrice = prod.getPrice().subtract(discount);
-//		prod.setPrice(lowerPrice);
-//		System.out.println("coupon : " + coupon.toString());
-//		System.out.println("discount : " + discount);
-//		System.out.println("lowerPrice : " + lowerPrice);
+		BigDecimal discount = coupon.getDiscount();
+		BigDecimal lowerPrice = prod.getPrice().subtract(discount);
+		prod.setPrice(lowerPrice);
+		System.out.println("coupon : " + coupon.toString());
+		System.out.println("discount : " + discount);
+		System.out.println("lowerPrice : " + lowerPrice);
 		return productRepo.save(prod);
 	}
 
