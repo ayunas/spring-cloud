@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor @AllArgsConstructor @ToString
@@ -15,7 +16,9 @@ public class Ticket {
 	private Long id;
 	@NotNull
 	private String event;
-	@NotNull private Long price;
-	@NotNull private String status;
+	@NotNull
+	private BigDecimal price;
+	@NotNull
+	private String status;
 }
 

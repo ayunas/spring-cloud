@@ -1,12 +1,15 @@
 package com.udemy.bharath.ticketservice;
 
 //import lombok.NonNull;
-import org.springframework.lang.NonNull;
+
+//import com.udemy.bharath.priceservice.Price;
+import com.udemy.bharath.ticketservice.dto.Price;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +19,9 @@ public class TicketController {
 
 	@Autowired
 	TicketRepo ticketRepo;
+
+	@Autowired
+	PriceAPI priceAPI;
 
 	@GetMapping
 	public List<Ticket> getTickets() {
@@ -34,7 +40,10 @@ public class TicketController {
 	}
 
 	@PostMapping
-	public Ticket addTicket(@RequestBody Ticket ticket) {
+	public Ticket addTicket(@RequestParam Long id, @RequestBody Ticket ticket) {
+		Price price = priceAPI.getPrice(id);
+		System.out.println(price.toString());
+		ticket.setPrice(price.getPrice());
 		Ticket tkt = ticketRepo.save(ticket);
 		System.out.println(tkt);
 		return tkt;
